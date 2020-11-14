@@ -17,16 +17,18 @@ public class UserAccount {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Address address;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Role role;
 
-    public UserAccount(String email, String password, String city, Address address) {
+    public UserAccount(String email, String password, String city, Address address, Role role) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.address = address;
+        this.role = role;
     }
 
-    public UserAccount(){
-
+    public UserAccount() {
     }
 
     public int getId() {
@@ -67,5 +69,13 @@ public class UserAccount {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
