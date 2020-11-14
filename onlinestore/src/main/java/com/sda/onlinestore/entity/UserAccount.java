@@ -1,4 +1,4 @@
-package com.sda.onlinestore.Entity;
+package com.sda.onlinestore.entity;
 
 import javax.persistence.*;
 
