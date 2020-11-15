@@ -23,7 +23,8 @@ public class Order {
     @OneToMany
     private List<OrderLine> orderLine;
 
-    //Customer
+    @ManyToOne
+    private UserAccount userAccount;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
