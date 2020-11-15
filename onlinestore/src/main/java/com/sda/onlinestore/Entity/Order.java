@@ -1,6 +1,8 @@
 package com.sda.onlinestore.entity;
 
 
+import com.sda.onlinestore.enums.OrderStatus;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;

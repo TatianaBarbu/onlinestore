@@ -1,5 +1,7 @@
 package com.sda.onlinestore.entity;
 
+import com.sda.onlinestore.enums.PreferredChannel;
+
 import javax.persistence.*;
 
 

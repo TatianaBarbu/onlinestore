@@ -1,4 +1,4 @@
-package com.sda.onlinestore.entity;
+package com.sda.onlinestore.enums;
 
 import javax.persistence.Entity;
 

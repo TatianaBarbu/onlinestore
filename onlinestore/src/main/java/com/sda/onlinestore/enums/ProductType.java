@@ -1,4 +1,4 @@
-package com.sda.onlinestore.entity;
+package com.sda.onlinestore.enums;
 
 public enum ProductType {
     //De completat cu produse
