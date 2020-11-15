@@ -8,6 +8,7 @@ public class OrderLineDto {
     private int quantity;
     private double price;
 
+
     public Long getId() {
         return id;
     }

@@ -21,7 +21,9 @@ public class OrderService {
         order.setTotalCost(orderDto.getTotalCost());
         order.setDeliveryAddress(orderDto.getDeliveryAddress());
         order.setDateOfOrder(orderDto.getDateOfOrder());
-
+        //order lines
+        //user account    ??
+        //order status
         orderRepository.save(order);
     }
 

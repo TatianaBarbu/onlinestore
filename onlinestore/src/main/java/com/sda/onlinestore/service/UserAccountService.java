@@ -22,5 +22,5 @@ public class UserAccountService {
         userAccountTransformer.transform(userAccountDto);
     }
 
-    
+
 }
