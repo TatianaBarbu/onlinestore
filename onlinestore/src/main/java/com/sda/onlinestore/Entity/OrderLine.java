@@ -1,11 +1,14 @@
-package com.sda.onlinestore.Entity;
+package com.sda.onlinestore.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class OrderLine {
 
 
     @Id
+    private int id;
     private String product;
     private int quantity;
     private double price;
@@ -16,7 +19,13 @@ public class OrderLine {
         this.price = price;
     }
 
+    public OrderLine() {
 
+    }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getProduct() {
         return product;
