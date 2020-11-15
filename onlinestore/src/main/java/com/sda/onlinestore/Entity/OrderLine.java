@@ -10,13 +10,13 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany
-    private List<Product> product;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Product product;
 
     private int quantity;
     private double price;
 
-    public OrderLine(List<Product> product, int quantity, double price) {
+    public OrderLine(Product product, int quantity, double price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -33,11 +33,11 @@ public class OrderLine {
         this.id = id;
     }
 
-    public List<Product> getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(List<Product> product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

@@ -8,7 +8,7 @@ public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
 
     private String email;
     private String password;
@@ -20,7 +20,7 @@ public class UserAccount {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Role role;
 
-    private String logoType;
+    private String thumbnail;
 
     @Enumerated(EnumType.STRING)
     private PreferredChannel preferredChannel;
@@ -29,22 +29,22 @@ public class UserAccount {
     public UserAccount() {
     }
 
-    public UserAccount(String email, String password, String city, Address address, Role role, String logoType, PreferredChannel preferredChannel) {
+    public UserAccount(String email, String password, String city, Address address, Role role, String thumbnail, PreferredChannel preferredChannel) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.address = address;
         this.role = role;
-        this.logoType = logoType;
+        this.thumbnail = thumbnail;
         this.preferredChannel = preferredChannel;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getEmail() {
@@ -88,11 +88,11 @@ public class UserAccount {
     }
 
     public String getLogoType() {
-        return logoType;
+        return thumbnail;
     }
 
     public void setLogoType(String logoType) {
-        this.logoType = logoType;
+        this.thumbnail = thumbnail;
     }
 
     public PreferredChannel getPreferredChannel() {

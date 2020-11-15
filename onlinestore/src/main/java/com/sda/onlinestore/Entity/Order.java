@@ -21,7 +21,7 @@ public class Order {
     private Date dateOfOrder;
 
     @OneToMany
-    private List<OrderLine> orderLine;
+    private List<OrderLine> orderLines;
 
     @OneToOne
     private UserAccount userAccount;
@@ -29,12 +29,12 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder, List<OrderLine> orderLine, UserAccount userAccount, OrderStatus orderStatus) {
+    public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder, List<OrderLine> orderLines, UserAccount userAccount, OrderStatus orderStatus) {
         this.totalCost = totalCost;
         this.deliveryAddress = deliveryAddress;
         this.userAddress = userAddress;
         this.dateOfOrder = dateOfOrder;
-        this.orderLine = orderLine;
+        this.orderLines = orderLines;
         this.userAccount = userAccount;
         this.orderStatus = orderStatus;
     }
@@ -83,11 +83,11 @@ public class Order {
     }
 
     public List<OrderLine> getOrderLine() {
-        return orderLine;
+        return orderLines;
     }
 
     public void setOrderLine(List<OrderLine> orderLine) {
-        this.orderLine = orderLine;
+        this.orderLines = orderLine;
     }
 
     public UserAccount getUserAccount() {
