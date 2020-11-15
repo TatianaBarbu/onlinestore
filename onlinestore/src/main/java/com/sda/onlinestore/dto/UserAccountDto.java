@@ -1,12 +1,12 @@
 package com.sda.onlinestore.dto;
 
 import com.sda.onlinestore.entity.Address;
-import com.sda.onlinestore.entity.PreferredChannel;
 import com.sda.onlinestore.entity.Role;
+import com.sda.onlinestore.enums.PreferredChannel;
 
 import javax.persistence.*;
 
-public class UserAccountDTO {
+public class UserAccountDto {
 
     private int id;
 
@@ -18,14 +18,14 @@ public class UserAccountDTO {
     private String thumbnail;
     private PreferredChannel preferredChannel;
 
-    public UserAccountDTO(String email, String password, String city, String thumbnail) {
+    public UserAccountDto(String email, String password, String city, String thumbnail) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.thumbnail = thumbnail;
     }
 
-    public UserAccountDTO() {
+    public UserAccountDto() {
     }
 
     public String getEmail() {

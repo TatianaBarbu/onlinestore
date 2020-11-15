@@ -1,14 +1,14 @@
 package com.sda.onlinestore.dto;
 
-public class CategoryDTO {
+public class CategoryDto {
 
     private String name;
 
-    public CategoryDTO(String name) {
+    public CategoryDto(String name) {
         this.name = name;
     }
 
-    public CategoryDTO() {
+    public CategoryDto() {
     }
 
     public String getName() {

@@ -1,14 +1,14 @@
 package com.sda.onlinestore.dto;
 
-public class RoleDTO {
+public class RoleDto {
 
     private String roleName;
 
-    public RoleDTO(String roleName) {
+    public RoleDto(String roleName) {
         this.roleName = roleName;
     }
 
-    public RoleDTO() {
+    public RoleDto() {
     }
 
     public String getRoleName() {

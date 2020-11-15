@@ -6,7 +6,7 @@ import com.sda.onlinestore.entity.ProductType;
 
 import javax.persistence.*;
 
-public class ProductDTO {
+public class ProductDto {
 
     private String description;
     private String thumbnail;
@@ -15,7 +15,7 @@ public class ProductDTO {
     private ProductType productType;
     private Author author;
 
-    public ProductDTO(String description, String thumbnail, Category category, int price, ProductType productType, Author author) {
+    public ProductDto(String description, String thumbnail, Category category, int price, ProductType productType, Author author) {
         this.description = description;
         this.thumbnail = thumbnail;
         this.category = category;
@@ -24,7 +24,7 @@ public class ProductDTO {
         this.author = author;
     }
 
-    public ProductDTO() {
+    public ProductDto() {
     }
 
     public String getDescription() {

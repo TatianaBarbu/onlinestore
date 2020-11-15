@@ -89,11 +89,11 @@ public class UserAccount {
         this.role = role;
     }
 
-    public String getLogoType() {
+    public String getThumbnail() {
         return thumbnail;
     }
 
-    public void setLogoType(String logoType) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
 

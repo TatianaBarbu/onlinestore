@@ -1,20 +1,20 @@
 package com.sda.onlinestore.dto;
 
-public class AddressDTO {
+public class AddressDto {
 
     private String country;
     private String city;
     private String street;
     private Long zipCode;
 
-    public AddressDTO(String country, String city, String street, Long zipCode) {
+    public AddressDto(String country, String city, String street, Long zipCode) {
         this.country = country;
         this.city = city;
         this.street = street;
         this.zipCode = zipCode;
     }
 
-    public AddressDTO() {
+    public AddressDto() {
     }
 
     public String getCountry() {
