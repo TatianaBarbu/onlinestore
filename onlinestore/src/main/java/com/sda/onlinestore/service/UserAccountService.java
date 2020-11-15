@@ -17,9 +17,24 @@ public class UserAccountService {
     @Autowired
     private UserAccountRepository userAccountRepository;
 
+    @Autowired
+    private UserAccountTransformer userAccountTransformer;
+
     public void addUserAccount(UserAccountDto userAccountDto){
-        UserAccountTransformer userAccountTransformer = new UserAccountTransformer();
-        userAccountTransformer.transform(userAccountDto);
+        UserAccount userAccount = userAccountTransformer.transform(userAccountDto);
+        userAccountRepository.save(userAccount);
+    }
+
+    public List<UserAccountDto> getUserAccounts(){
+
+        List<UserAccount> userAccounts = userAccountRepository.findAll();
+        List<UserAccountDto> userAccountDtoList = new ArrayList<>();
+
+        for(UserAccount userAccount : userAccounts){
+            UserAccountDto userAccountDto = userAccountTransformer.transformReversed(userAccount);
+            userAccountDtoList.add(userAccountDto);
+        }
+        return  userAccountDtoList;
     }
 
 

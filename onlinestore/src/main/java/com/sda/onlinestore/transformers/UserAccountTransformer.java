@@ -15,7 +15,7 @@ public class UserAccountTransformer {
         return userAccount;
     }
 
-    public UserAccountDto trnasformReversed(UserAccount userAccount){
+    public UserAccountDto transformReversed(UserAccount userAccount){
         UserAccountDto userAccountDto = new UserAccountDto();
         BeanUtils.copyProperties(userAccount, userAccountDto);
         return userAccountDto;
