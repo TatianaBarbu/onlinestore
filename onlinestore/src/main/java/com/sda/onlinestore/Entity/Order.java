@@ -29,11 +29,14 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder) {
+    public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder, List<OrderLine> orderLine, UserAccount userAccount, OrderStatus orderStatus) {
         this.totalCost = totalCost;
         this.deliveryAddress = deliveryAddress;
         this.userAddress = userAddress;
         this.dateOfOrder = dateOfOrder;
+        this.orderLine = orderLine;
+        this.userAccount = userAccount;
+        this.orderStatus = orderStatus;
     }
 
     public Order() {
@@ -77,5 +80,29 @@ public class Order {
 
     public void setDateOfOrder(Date dateOfOrder) {
         this.dateOfOrder = dateOfOrder;
+    }
+
+    public List<OrderLine> getOrderLine() {
+        return orderLine;
+    }
+
+    public void setOrderLine(List<OrderLine> orderLine) {
+        this.orderLine = orderLine;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

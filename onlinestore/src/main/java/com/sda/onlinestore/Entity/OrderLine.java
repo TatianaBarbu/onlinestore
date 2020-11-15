@@ -1,9 +1,7 @@
 package com.sda.onlinestore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class OrderLine {
@@ -12,11 +10,13 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String product;
+    @OneToMany
+    private List<Product> product;
+
     private int quantity;
     private double price;
 
-    public OrderLine(String product, int quantity, double price) {
+    public OrderLine(List<Product> product, int quantity, double price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -33,11 +33,11 @@ public class OrderLine {
         this.id = id;
     }
 
-    public String getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 
