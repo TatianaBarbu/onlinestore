@@ -1,7 +1,7 @@
 package com.sda.onlinestore.dto;
 
 import com.sda.onlinestore.entity.Address;
-import com.sda.onlinestore.entity.PreferredChannel;
+import com.sda.onlinestore.enums.PreferredChannel;
 import com.sda.onlinestore.entity.Role;
 
 import javax.persistence.*;

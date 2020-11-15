@@ -14,6 +14,10 @@ public class OrderDto {
     private Address deliveryAddress;
     private Date dateOfOrder;
 
+    //order lines
+    //user account  ??
+    //order status
+
 
     public Long getId() {
         return id;
