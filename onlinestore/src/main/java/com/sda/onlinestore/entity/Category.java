@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,7 +15,6 @@ public class Category {
     private String name;
 
     public Category() {
-
     }
 
     public Category(String name) {

@@ -1,9 +1,9 @@
 package com.sda.onlinestore.entity;
 
-import org.hibernate.annotations.WhereJoinTable;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -20,10 +20,14 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfOrder;
 
+    @OneToMany
+    private List<OrderLine> orderLine;
 
-    //OrderLine
     //Customer
-    //Status
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder) {
         this.totalCost = totalCost;
         this.deliveryAddress = deliveryAddress;
