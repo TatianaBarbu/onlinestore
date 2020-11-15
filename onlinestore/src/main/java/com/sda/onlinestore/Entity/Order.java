@@ -14,8 +14,9 @@ public class Order {
     private Long id;
 
     private double totalCost;
-    private String deliveryAddress;
-    private String userAddress;
+
+    @ManyToOne
+    private Address deliveryAddress;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfOrder;
@@ -29,10 +30,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public Order(double totalCost, String deliveryAddress, String userAddress, Date dateOfOrder, List<OrderLine> orderLines, UserAccount userAccount, OrderStatus orderStatus) {
+    public Order(double totalCost, Address deliveryAddress, Date dateOfOrder, List<OrderLine> orderLines, UserAccount userAccount, OrderStatus orderStatus) {
         this.totalCost = totalCost;
         this.deliveryAddress = deliveryAddress;
-        this.userAddress = userAddress;
         this.dateOfOrder = dateOfOrder;
         this.orderLines = orderLines;
         this.userAccount = userAccount;
@@ -58,20 +58,12 @@ public class Order {
         this.totalCost = totalCost;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
     }
 
     public Date getDateOfOrder() {
@@ -82,12 +74,12 @@ public class Order {
         this.dateOfOrder = dateOfOrder;
     }
 
-    public List<OrderLine> getOrderLine() {
+    public List<OrderLine> getOrderLines() {
         return orderLines;
     }
 
-    public void setOrderLine(List<OrderLine> orderLine) {
-        this.orderLines = orderLine;
+    public void setOrderLines(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 
     public UserAccount getUserAccount() {
