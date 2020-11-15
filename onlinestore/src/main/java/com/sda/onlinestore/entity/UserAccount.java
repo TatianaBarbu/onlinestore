@@ -20,15 +20,23 @@ public class UserAccount {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Role role;
 
-    public UserAccount(String email, String password, String city, Address address, Role role) {
+    private String logoType;
+
+    @Enumerated(EnumType.STRING)
+    private PreferredChannel preferredChannel;
+
+
+    public UserAccount() {
+    }
+
+    public UserAccount(String email, String password, String city, Address address, Role role, String logoType, PreferredChannel preferredChannel) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.address = address;
         this.role = role;
-    }
-
-    public UserAccount() {
+        this.logoType = logoType;
+        this.preferredChannel = preferredChannel;
     }
 
     public int getId() {
@@ -77,5 +85,21 @@ public class UserAccount {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getLogoType() {
+        return logoType;
+    }
+
+    public void setLogoType(String logoType) {
+        this.logoType = logoType;
+    }
+
+    public PreferredChannel getPreferredChannel() {
+        return preferredChannel;
+    }
+
+    public void setPreferredChannel(PreferredChannel preferredChannel) {
+        this.preferredChannel = preferredChannel;
     }
 }
