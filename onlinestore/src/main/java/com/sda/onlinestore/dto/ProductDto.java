@@ -2,7 +2,7 @@ package com.sda.onlinestore.dto;
 
 import com.sda.onlinestore.entity.Author;
 import com.sda.onlinestore.entity.Category;
-import com.sda.onlinestore.entity.ProductType;
+import com.sda.onlinestore.enums.ProductType;
 
 import javax.persistence.*;
 
