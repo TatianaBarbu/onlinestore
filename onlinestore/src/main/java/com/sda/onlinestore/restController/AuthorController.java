@@ -1,4 +1,4 @@
-package com.sda.onlinestore.controller;
+package com.sda.onlinestore.restController;
 
 import com.sda.onlinestore.dto.AuthorDto;
 import com.sda.onlinestore.service.AuthorService;

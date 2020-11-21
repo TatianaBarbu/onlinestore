@@ -1,4 +1,4 @@
-package com.sda.onlinestore.controller;
+package com.sda.onlinestore.restController;
 import com.sda.onlinestore.dto.OrderDto;
 import com.sda.onlinestore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

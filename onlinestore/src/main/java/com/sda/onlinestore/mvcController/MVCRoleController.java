@@ -1,4 +1,4 @@
-package com.sda.onlinestore.mvccontroller;
+package com.sda.onlinestore.mvcController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

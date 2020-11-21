@@ -1,4 +1,4 @@
-package com.sda.onlinestore.controller;
+package com.sda.onlinestore.restController;
 
 import com.sda.onlinestore.dto.RoleDto;
 import com.sda.onlinestore.service.RoleService;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.awt.geom.RectangularShape;
 import java.util.List;
 
 @Controller
