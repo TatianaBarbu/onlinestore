@@ -13,16 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class MVCAuthorController {
+public class AuthorMVCController {
 
     @Autowired
     private AuthorService authorService;
 
     @GetMapping("/viewAuthors")
     public String viewAuthors(Model model){
-
         List<AuthorDto> authorList = authorService.getAuthors();
-
         model.addAttribute("authors", authorList);
         return "author-list";
     }

@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MVCUserAccountController {
+public class RoleMVCController {
 
-    @GetMapping("/viewUserAccounts")
-    public String viewUserAccounts(){
-        return "userAccount-list";
+    @GetMapping("/viewRole")
+    public String viewRole(){
+        return "role-list";
     }
 }
