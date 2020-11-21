@@ -3,7 +3,6 @@ package com.sda.onlinestore.transformers;
 import com.sda.onlinestore.dto.AuthorDto;
 import com.sda.onlinestore.entity.Author;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component

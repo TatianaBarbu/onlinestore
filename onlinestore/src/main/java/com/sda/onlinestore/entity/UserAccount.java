@@ -27,6 +27,8 @@ public class UserAccount {
     @Enumerated(EnumType.STRING)
     private PreferredChannel preferredChannel;
 
+    @OneToOne(mappedBy = "userAccount")
+    private Order order;
 
     public UserAccount() {
     }

@@ -14,7 +14,7 @@ public class UserAccountDto {
     private String email;
     private String password;
     private String city;
-    private Address address;
+    private AddressDto address;
     private Role role;
     private String thumbnail;
     private PreferredChannel preferredChannel;
@@ -59,5 +59,13 @@ public class UserAccountDto {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public AddressDto getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDto address) {
+        this.address = address;
     }
 }
