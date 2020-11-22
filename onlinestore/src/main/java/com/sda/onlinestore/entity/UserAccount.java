@@ -106,4 +106,13 @@ public class UserAccount {
     public void setPreferredChannel(PreferredChannel preferredChannel) {
         this.preferredChannel = preferredChannel;
     }
+
+    public Order getOrder(){
+        return order;
+    }
+
+    public void setOrder (Order order){
+        this.order = order;
+    }
+
 }

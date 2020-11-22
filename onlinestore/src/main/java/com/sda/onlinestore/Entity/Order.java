@@ -4,6 +4,7 @@ package com.sda.onlinestore.entity;
 import com.sda.onlinestore.enums.OrderStatus;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfOrder;
 
-    @OneToMany
-    private List<OrderLine> orderLines;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderLine> orderLines = new ArrayList<>();
 
     @OneToOne
     private UserAccount userAccount;
