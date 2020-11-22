@@ -1,6 +1,9 @@
 package com.sda.onlinestore.service;
+
 import com.sda.onlinestore.dto.OrderDto;
 import com.sda.onlinestore.entity.Order;
+import com.sda.onlinestore.entity.OrderLine;
+import com.sda.onlinestore.entity.Product;
 import com.sda.onlinestore.entity.UserAccount;
 import com.sda.onlinestore.repository.OrderLineRepository;
 import com.sda.onlinestore.repository.OrderRepository;
@@ -46,11 +49,32 @@ public class OrderService {
         if (userAccountOptional.isPresent()) {
             UserAccount userAccount = userAccountOptional.get();
             Order order = userAccount.getOrder();
-            if (order == null){
+            if (order == null) {
                 order = new Order();
                 userAccount.setOrder(order);
             }
-            List<OrderLine> orderLineList = order.getOrderLines()
+            List<OrderLine> orderLineList = order.getOrderLines();
+            boolean isNewItem = true;
+            for (OrderLine orderLine : orderLineList) {
+                if (orderLine.getProduct().getId().equals(productId)) {
+                    orderLine.setQuantity(orderLine.getQuantity() + 1);
+                    orderLine.setPrice(orderLine.getQuantity() * orderLine.getProduct().getPrice());
+                    orderLineRepository.save(orderLine);
+                    isNewItem = false;
+                }
+            }
+            if (isNewItem){
+                Optional<Product> productOptional = productRepository.findById(productId);
+                if(productOptional.isPresent()){
+                    OrderLine newOrderLine = new OrderLine();
+                    Product product = productOptional.get();
+                    newOrderLine.setProduct(product);
+                    newOrderLine.setQuantity(1);
+                    newOrderLine.setPrice(product.getPrice());
+                    order.getOrderLines().add(newOrderLine);
+                    orderRepository.save(order);
+                }
+            }
         }
     }
 
