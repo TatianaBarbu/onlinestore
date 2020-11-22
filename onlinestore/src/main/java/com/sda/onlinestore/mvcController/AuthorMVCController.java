@@ -26,14 +26,13 @@ public class AuthorMVCController {
     }
 
     @PostMapping("/addAuthor")
-    public String viewAddAuthor(@ModelAttribute AuthorDto author){
+    public String addAuthor(@ModelAttribute AuthorDto author){
         authorService.addAuthor(author);
         return "redirect:/author-list";
     }
 
     @GetMapping("/viewAddAuthors")
     public String viewAddAuthors(Model model){
-
         AuthorDto authorDto = new AuthorDto();
         model.addAttribute("author", authorDto);
         return "view-add-author";
