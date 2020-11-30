@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -11,18 +12,22 @@
     <link rel="icon" href="../../favicon.ico"/>
     <title>Navbar Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/myStyles.css}">
 </head>
 <body>
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#"><h2 style="font-style: italic">Online Store</h2></a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav justify-content-center">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="#" style="font-style: italic">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -33,7 +38,26 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="font-style: italic">Disabled</a>
             </li>
         </ul>
-            <a class="nav-link" href="#" style="font-style: italic">Hello, Sign In to your account</a>
+        <!-- Facebook -->
+        <a href="#" style="color: white; margin-left: 16px" class="fa fa-facebook"></a>
+        <!-- Instagram -->
+        <a href="#" style="color:  white; margin-left: 16px" class="fa fa-instagram"></a>
+        <!-- Twitter -->
+        <a href="#" style="color: white; margin-left: 16px" class="fa fa-twitter"></a>
+
+        <!-- Sign In -->
+        <a class="nav-link btn btn-outline-light rounded-pill" href="#" style="margin-left: 16px">Sign In</a>
+        <!-- Create Acount -->
+        <a class="nav-link btn btn-outline-light rounded-pill" href="#" style="margin-left: 16px">Create Account</a>
+        <!-- Cart -->
+        <a href="#" style="margin-left: 26px; margin-right: 15px">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-basket3-fill" fill="white"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z"/>
+                <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
+            </svg>
+        </a>
     </div>
 </nav>
 
@@ -46,13 +70,16 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.vegandmore.co.za/wp-content/uploads/2020/09/fruit-and-veg-slider.png" class="d-block w-100" alt="...">
+            <img src="https://www.vegandmore.co.za/wp-content/uploads/2020/09/fruit-and-veg-slider.png"
+                 class="d-block w-100" alt="1">
         </div>
         <div class="carousel-item">
-            <img src="https://www.utahsown.org/wp-content/uploads/2020/06/uoPRODUCE.png" class="d-block w-100" alt="...">
+            <img src="https://www.utahsown.org/wp-content/uploads/2020/06/uoPRODUCE.png" class="d-block w-100"
+                 alt="2">
         </div>
         <div class="carousel-item">
-            <img src="https://www.fernwoodfitness.com.au/-/media/pages/blog/shared/categories/nutrition/benefitsoffruit_nutrition_blog_1920x600px.jpg?h=600&w=1920&la=en&hash=7A6E4609F1F83BEC4F29B0079B8662F6" class="d-block w-100" alt="...">
+            <img src="https://www.fernwoodfitness.com.au/-/media/pages/blog/shared/categories/nutrition/benefitsoffruit_nutrition_blog_1920x600px.jpg?h=600&w=1920&la=en&hash=7A6E4609F1F83BEC4F29B0079B8662F6"
+                 class="d-block w-100" alt="3">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -65,20 +92,101 @@
     </a>
 </div>
 
-<!-- Get Started/Create Account -->
+<!-- Category Choosing -->
 <div class="card text-center">
     <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <a href="#" class="btn btn-primary">Sign In</a>
-        <a href="#" class="btn btn-primary">Create Account</a>
+        <h5 class="card-title font-italic font-weight-bold">Eat Good Feel Good</h5>
+        <a href="#vegetables" class="btn btn-success rounded-pill bg-success nav-item">Vegetables</a>
+        <a href="#fruits" class="btn btn-danger rounded-pill bg-danger nav-item">Fruits</a>
     </div>
 </div>
 
+<!-- Items in the Shop (Products) -->
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+
+    <!-- Vegetables -->
+    <div class="text-center font-italic font-weight-bold" id="vegetables"
+         style="padding-top: 100px; padding-bottom: 30px"><h3>Vegetables</h3></div>
+    <div class="card-group">
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fruits -->
+    <div class="text-center font-italic font-weight-bold"
+         id="fruits" style="padding-top: 100px; padding-bottom: 30px;"><h3>Fruits</h3></div>
+    <div class="card-group">
+        <div class="card">
+            <img src="https://www.hdwallpapersfreedownload.com/uploads/large/fruits/bananas-hd-image.jpg" class="card-img-top" alt="banana" height="300" width="100" >
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
