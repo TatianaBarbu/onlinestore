@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 public class UserAccountDto {
 
-    private int id;
     private String email;
+    private String username;
     private String password;
     private String confirmPassword;
     private String city;
@@ -19,12 +19,13 @@ public class UserAccountDto {
     private String thumbnail;
     private PreferredChannel preferredChannel;
 
-    public UserAccountDto(String email, String password, String city, String thumbnail, String confirmPassword) {
+    public UserAccountDto(String email, String password, String city, String thumbnail, String confirmPassword, String username) {
         this.email = email;
         this.password = password;
         this.city = city;
         this.thumbnail = thumbnail;
         this.confirmPassword = confirmPassword;
+        this.username = username;
     }
 
     public UserAccountDto() {
@@ -76,5 +77,21 @@ public class UserAccountDto {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DefaultController {
     @Autowired
     private UserDetailService userService;
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("user", new UserDto());
-        return "/register";
-    }
+
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute("user") UserDto userDto) {
         userService.register(userDto);
@@ -25,11 +21,11 @@ public class DefaultController {
     }
     @GetMapping("/")
     public String home1() {
-        return "/home";
+        return "/index";
     }
     @GetMapping("/home")
     public String home() {
-        return "/home";
+        return "/index";
     }
     @GetMapping("/admin")
     public String admin() {
@@ -51,10 +47,7 @@ public class DefaultController {
     public String about() {
         return "/about";
     }
-    @GetMapping("/login")
-    public String login() {
-        return "/login";
-    }
+
     @GetMapping("/403")
     public String error403() {
         return "/error/403";

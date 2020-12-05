@@ -17,12 +17,8 @@ import java.util.Optional;
 @Controller
 public class UserAccountMVCController {
 
-    private final UserAccountService userAccountService;
-
     @Autowired
-    public UserAccountMVCController(UserAccountService userAccountService) {
-        this.userAccountService = userAccountService;
-    }
+    private UserAccountService userAccountService;
 
     @GetMapping(path = "/login")
     public String showLogin(){
@@ -35,10 +31,11 @@ public class UserAccountMVCController {
         return "register";
     }
 
-//    @PostMapping(path = "/user/register")
-//    public String registerUser(@ModelAttribute("userRegister") @Valid UserAccountDto userAccountDto, BindingResult result){
-//        Optional<UserAccount> optionalUserAccount userAccountService.findUserByEmail(userAccountDto.getEmail())
-//    }
+    @PostMapping(path = "/user/register")
+    public String registerUser(@ModelAttribute("userRegister") UserAccountDto userAccountDto){
+        userAccountService.addUserAccount(userAccountDto);
+        return "index";
+    }
 
     @GetMapping("/viewUserAccounts")
     public String viewUserAccounts(){

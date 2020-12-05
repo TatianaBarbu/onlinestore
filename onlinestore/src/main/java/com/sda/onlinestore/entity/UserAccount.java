@@ -11,7 +11,7 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    private String username;
     private String email;
     private String password;
     private String city;
@@ -33,7 +33,7 @@ public class UserAccount {
     public UserAccount() {
     }
 
-    public UserAccount(String email, String password, String city, Address address, Role role, String thumbnail, PreferredChannel preferredChannel) {
+    public UserAccount(String email, String password, String city, Address address, Role role, String thumbnail, PreferredChannel preferredChannel, String username) {
         this.email = email;
         this.password = password;
         this.city = city;
@@ -41,6 +41,7 @@ public class UserAccount {
         this.role = role;
         this.thumbnail = thumbnail;
         this.preferredChannel = preferredChannel;
+        this.username = username;
     }
 
     public int getId() {
@@ -115,4 +116,12 @@ public class UserAccount {
         this.order = order;
     }
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
