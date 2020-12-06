@@ -1,8 +1,8 @@
 package com.sda.onlinestore.transformers;
 
 import com.sda.onlinestore.dto.UserAccountDto;
+import com.sda.onlinestore.entity.Address;
 import com.sda.onlinestore.entity.UserAccount;
-import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +10,14 @@ import org.springframework.stereotype.Component;
 public class UserAccountTransformer {
 
     public UserAccount transform(UserAccountDto userAccountDto){
+
+        Address address = new Address();
+        BeanUtils.copyProperties(userAccountDto.getAddress(), address);
+
         UserAccount userAccount = new UserAccount();
         BeanUtils.copyProperties(userAccountDto, userAccount);
+
+        userAccount.setAddress(address);
         return userAccount;
     }
 
@@ -20,5 +26,4 @@ public class UserAccountTransformer {
         BeanUtils.copyProperties(userAccount, userAccountDto);
         return userAccountDto;
     }
-
 }

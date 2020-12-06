@@ -33,7 +33,11 @@ public class UserAccountMVCController {
     }
 
     @PostMapping(path = "/user/register")
-    public String registerUser(@ModelAttribute("userRegister") UserAccountDto userAccountDto){
+    public String registerUser(@ModelAttribute("userRegister") UserAccountDto userAccountDto, BindingResult result){
+        if(!userAccountDto.getPassword().equals(userAccountDto.getConfirmPassword())){
+            result.rejectValue("password", null, "Passwords are not matching!");
+            return "/register";
+        }
         userAccountService.addUserAccount(userAccountDto);
         return "index";
     }

@@ -10,18 +10,17 @@ public class UserAccountDto {
     private String username;
     private String password;
     private String confirmPassword;
-    private Address address;
+    private AddressDto address;
     private Role role;
     private String thumbnail;
     private PreferredChannel preferredChannel;
 
-    public UserAccountDto(String email, String password, String thumbnail, String confirmPassword, String username, Address address) {
+    public UserAccountDto(String email, String password, String thumbnail, String confirmPassword, String username) {
         this.email = email;
         this.password = password;
         this.thumbnail = thumbnail;
         this.confirmPassword = confirmPassword;
         this.username = username;
-        this.address = address;
     }
 
     public UserAccountDto() {
@@ -75,11 +74,12 @@ public class UserAccountDto {
         this.role = role;
     }
 
-    public Address getAddress() {
+
+    public AddressDto getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDto address) {
         this.address = address;
     }
 }
