@@ -3,9 +3,6 @@ package com.sda.onlinestore.dto;
 import com.sda.onlinestore.entity.Address;
 import com.sda.onlinestore.enums.PreferredChannel;
 import com.sda.onlinestore.entity.Role;
-import com.sda.onlinestore.enums.PreferredChannel;
-
-import javax.persistence.*;
 
 public class UserAccountDto {
 
@@ -13,19 +10,18 @@ public class UserAccountDto {
     private String username;
     private String password;
     private String confirmPassword;
-    private String city;
-    private AddressDto address;
+    private Address address;
     private Role role;
     private String thumbnail;
     private PreferredChannel preferredChannel;
 
-    public UserAccountDto(String email, String password, String city, String thumbnail, String confirmPassword, String username) {
+    public UserAccountDto(String email, String password, String thumbnail, String confirmPassword, String username, Address address) {
         this.email = email;
         this.password = password;
-        this.city = city;
         this.thumbnail = thumbnail;
         this.confirmPassword = confirmPassword;
         this.username = username;
+        this.address = address;
     }
 
     public UserAccountDto() {
@@ -47,28 +43,12 @@ public class UserAccountDto {
         this.password = password;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getThumbnail() {
         return thumbnail;
     }
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
-    }
-
-    public AddressDto getAddress() {
-        return address;
-    }
-
-    public void setAddress(AddressDto address) {
-        this.address = address;
     }
 
     public String getConfirmPassword() {
@@ -93,5 +73,13 @@ public class UserAccountDto {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

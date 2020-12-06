@@ -14,7 +14,6 @@ public class UserAccount {
     private String username;
     private String email;
     private String password;
-    private String city;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Address address;
@@ -33,10 +32,9 @@ public class UserAccount {
     public UserAccount() {
     }
 
-    public UserAccount(String email, String password, String city, Address address, Role role, String thumbnail, PreferredChannel preferredChannel, String username) {
+    public UserAccount(String email, String password, Address address, Role role, String thumbnail, PreferredChannel preferredChannel, String username) {
         this.email = email;
         this.password = password;
-        this.city = city;
         this.address = address;
         this.role = role;
         this.thumbnail = thumbnail;
@@ -66,14 +64,6 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public Address getAddress() {
