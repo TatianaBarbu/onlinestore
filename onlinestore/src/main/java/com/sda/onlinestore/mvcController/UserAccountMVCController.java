@@ -23,13 +23,13 @@ public class UserAccountMVCController {
 
     @GetMapping(path = "/login")
     public String showLogin(){
-        return "login";
+        return "/login";
     }
 
     @GetMapping(path = "/register")
     public String showRegisterForm(Model model){
         model.addAttribute("userRegister", new UserAccountDto());
-        return "register";
+        return "/register";
     }
 
     @PostMapping(path = "/user/register")
@@ -39,7 +39,7 @@ public class UserAccountMVCController {
             return "/register";
         }
         userAccountService.addUserAccount(userAccountDto);
-        return "index";
+        return "/index";
     }
 
     @GetMapping("/viewUserAccounts")
