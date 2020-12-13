@@ -23,23 +23,23 @@ public class UserAccountMVCController {
 
     @GetMapping(path = "/login")
     public String showLogin(){
-        return "/login";
+        return "login";
     }
 
     @GetMapping(path = "/register")
     public String showRegisterForm(Model model){
         model.addAttribute("userRegister", new UserAccountDto());
-        return "/register";
+        return "register";
     }
 
     @PostMapping(path = "/user/register")
     public String registerUser(@ModelAttribute("userRegister") UserAccountDto userAccountDto, BindingResult result){
         if(!userAccountDto.getPassword().equals(userAccountDto.getConfirmPassword())){
             result.rejectValue("password", null, "Passwords are not matching!");
-            return "/register";
+            return "register";
         }
         userAccountService.addUserAccount(userAccountDto);
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/viewUserAccounts")
