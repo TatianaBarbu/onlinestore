@@ -49,8 +49,8 @@
             </li>
         </ul>
 
-        <span style="color: white; font-weight: bold" sec:authorize="isAuthenticated()">
-            | Logged user: <span  sec:authentication=" name"></span> |
+        <span style="color: white" sec:authorize="isAuthenticated()">
+            | Logged as: <span  sec:authentication=" name"></span> |
             Roles: <span sec:authentication="principal.authorities"></span> |
             <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Log Out</a>
         </span>

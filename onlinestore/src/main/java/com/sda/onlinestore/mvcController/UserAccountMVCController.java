@@ -18,32 +18,42 @@ import java.util.Optional;
 @Controller
 public class UserAccountMVCController {
 
+    private final UserAccountService userAccountService;
+
     @Autowired
-    private UserAccountService userAccountService;
+    public UserAccountMVCController(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
 
     @GetMapping(path = "/login")
-    public String showLogin(){
+    public String showLogin() {
         return "login";
     }
 
     @GetMapping(path = "/register")
-    public String showRegisterForm(Model model){
+    public String showRegisterForm(Model model) {
         model.addAttribute("userRegister", new UserAccountDto());
         return "register";
     }
 
     @PostMapping(path = "/user/register")
-    public String registerUser(@ModelAttribute("userRegister") UserAccountDto userAccountDto, BindingResult result){
-        if(!userAccountDto.getPassword().equals(userAccountDto.getConfirmPassword())){
+    public String registerUser(@ModelAttribute("userRegister") @Valid UserAccountDto userAccountDto, BindingResult result) {
+        Optional<UserAccount> optUserAccount = this.userAccountService.findUserAccountByUsername(userAccountDto.getUsername());
+        if (optUserAccount.isPresent()) {
+            result.rejectValue("username", null, "Username already exists.");
+        }
+        if (!userAccountDto.getPassword().equals(userAccountDto.getConfirmPassword())) {
             result.rejectValue("password", null, "Passwords are not matching!");
+        }
+        if(result.hasErrors()){
             return "register";
         }
         userAccountService.addUserAccount(userAccountDto);
-        return "index";
+        return "login";
     }
 
     @GetMapping("/viewUserAccounts")
-    public String viewUserAccounts(){
+    public String viewUserAccounts() {
         return "userAccount-list";
     }
 }

@@ -1,13 +1,15 @@
 package com.sda.onlinestore.dto;
 
+import com.sda.onlinestore.entity.Role;
+
 public class UserDto {
 
     private String username;
     private String password;
     private String email;
-    private String role;
+    private Role role;
 
-    public UserDto(String username, String password, String email, String role) {
+    public UserDto(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -41,11 +43,11 @@ public class UserDto {
         this.email = email;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }
