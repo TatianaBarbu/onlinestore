@@ -4,11 +4,13 @@ package com.sda.onlinestore.service;
 import com.sda.onlinestore.dto.UserAccountDto;
 import com.sda.onlinestore.entity.Role;
 import com.sda.onlinestore.entity.UserAccount;
+import com.sda.onlinestore.exception.NotFoundException;
 import com.sda.onlinestore.repository.UserAccountRepository;
 import com.sda.onlinestore.transformers.UserAccountTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,7 +26,7 @@ import java.util.Optional;
 public class UserAccountService implements UserDetailsService {
 
     @Autowired
-    private UserAccountRepository userAccountRepository;
+    private final UserAccountRepository userAccountRepository;
 
     @Autowired
     private UserAccountTransformer userAccountTransformer;
@@ -80,9 +82,21 @@ public class UserAccountService implements UserDetailsService {
     public UserAccount saveUserAccount(UserAccount userAccount) {
         return userAccountRepository.save(userAccount);
     }
+    
+    public UserAccount findUserAccountById(Long id) {
+        Optional<UserAccount> optUserAccount = userAccountRepository.findById(id);
+        if(optUserAccount.isPresent()){
+            UserAccount userAccount = optUserAccount.get();
+            System.out.println(userAccount.toString());
+            return userAccount;
+        } else {
+            System.out.println("User account with ID " + id + " does not exist.");
+            throw new NotFoundException("User account with ID " + id + " does not exist.");
+        }
+    }
 
-    public void deleteUserAccountByUsername(String username) {
-        this.findUserAccountByUsername(username);
-        userAccountRepository.findUserAccountByUsername(username);
+    public void deleteUserAccountById(Long id) {
+        this.findUserAccountById(id);
+        userAccountRepository.deleteById(id);
     }
 }

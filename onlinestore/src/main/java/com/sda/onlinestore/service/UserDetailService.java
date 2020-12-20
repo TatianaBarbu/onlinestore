@@ -18,10 +18,20 @@ import java.util.*;
 
 @Service("userService")
 public class UserDetailService implements UserDetailsService {
-    @Autowired
-    private UserAccountRepository userAccountRepository;
+
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
+
+    private final UserAccountRepository userAccountRepository;
+
+    @Autowired
+    public UserDetailService(UserAccountRepository userAccountRepository) {
+        this.userAccountRepository = userAccountRepository;
+    }
+
+    public Optional<UserAccount> findUserAccountByUsername(String username) {
+        return this.userAccountRepository.findUserAccountByUsername(username);
+    }
 
     public UserAccount register(UserDto userDto) {
         UserAccount userAccount = new UserAccount();

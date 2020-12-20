@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -53,7 +54,44 @@ public class UserAccountMVCController {
     }
 
     @GetMapping("/viewUserAccounts")
-    public String viewUserAccounts() {
+    public String viewUserAccounts(Model model) {
+        model.addAttribute("users", this.userAccountService.getUserAccounts());
         return "userAccount-list";
+    }
+
+    @GetMapping(path = "/userAccount/edit/{id}")
+    public String showEditPage(@PathVariable("id") Long id, Model model){
+        model.addAttribute("userAccount", this.userAccountService.findUserAccountById(id));
+        return "edit-userAccount";
+    }
+
+    @GetMapping(path = "/userAccount/delete/{id}")
+    public String deleteUserAccountById(@PathVariable("id") Long id, Model model){
+        this.userAccountService.deleteUserAccountById(id);
+        return "redirect:/viewUserAccounts";
+    }
+
+    @GetMapping(path = "/signup")
+    public String showSignupPage(Model model){
+        model.addAttribute("userAccount", new UserAccount());
+        return "register";
+    }
+
+    @PostMapping(path = "/userAccount/add")
+    public String addUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "userAccount-list";
+        }
+        this.userAccountService.saveUserAccount(userAccount);
+        return "redirect:/";
+    }
+
+    @PostMapping(path = "/userAccount/update")
+    public String editUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result){
+        if (result.hasErrors()) {
+            return "edit-userAccount";
+        }
+        this.userAccountService.saveUserAccount(userAccount);
+        return "redirect:/";
     }
 }

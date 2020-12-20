@@ -6,6 +6,7 @@ import com.sda.onlinestore.entity.Role;
 
 public class UserAccountDto {
 
+    private Long id;
     private String email;
     private String username;
     private String password;
@@ -81,5 +82,13 @@ public class UserAccountDto {
 
     public void setAddress(AddressDto address) {
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

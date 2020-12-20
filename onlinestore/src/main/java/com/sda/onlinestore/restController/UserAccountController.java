@@ -12,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@RequestMapping(path = "/api/userAccount")
+@RestController
 @CrossOrigin(origins = "*")
-@Controller
+@RequestMapping(path = "/api/userAccount")
 public class UserAccountController {
 
     private final UserAccountService userAccountService;
@@ -28,24 +29,21 @@ public class UserAccountController {
         this.userAccountTransformer = userAccountTransformer;
     }
 
-    //SOLVED
-    @PostMapping("/api/createUserAccount")
+    @PostMapping
     public ResponseEntity<UserAccountDto> createUserAccount(@RequestBody UserAccountDto userAccountDto){
         UserAccount userAccount = userAccountTransformer.transform(userAccountDto);
         UserAccount savedUserAccount = userAccountService.saveUserAccount(userAccount);
         UserAccountDto savedUserAccountDto = userAccountTransformer.transformReversed(savedUserAccount);
-        return ResponseEntity.ok(userAccountDto);
+        return ResponseEntity.ok(savedUserAccountDto);
     }
 
-    //Just Check again
-    @GetMapping("/api/getUserAccounts")
+    @GetMapping
     public ResponseEntity<List<UserAccountDto>> getUserAccounts(){
         List<UserAccountDto> userAccountDtoList = userAccountService.getUserAccounts();
         return ResponseEntity.ok(userAccountDtoList);
     }
 
-    //SOLVED
-    @PutMapping("/api/updateUserAccount")
+    @PutMapping
     public ResponseEntity<UserAccountDto> updateUserAccount(@RequestBody UserAccountDto userAccountDto) {
         UserAccount userAccount = userAccountTransformer.transform(userAccountDto);
         UserAccount savedUserAccount = userAccountService.saveUserAccount(userAccount);
@@ -53,10 +51,16 @@ public class UserAccountController {
         return ResponseEntity.ok(savedUserAccountDto);
     }
 
-    //CHECK IT
-    @DeleteMapping(path = "/{username}")
-    public ResponseEntity<Void> deleteUserAccountByUsername(@PathVariable("username") String username) {
-        userAccountService.deleteUserAccountByUsername(username);
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<UserAccountDto> findUserAccountById(@PathVariable("id") Long id) {
+        UserAccount userAccount = userAccountService.findUserAccountById(id);
+        UserAccountDto userAccountDto = userAccountTransformer.transformReversed(userAccount);
+        return ResponseEntity.ok(userAccountDto);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteUserAccountById(@PathVariable("id") Long id) {
+        userAccountService.deleteUserAccountById(id);
         return ResponseEntity.noContent().build();
     }
 }
