@@ -1,5 +1,6 @@
 package com.sda.onlinestore.transformers;
 
+import com.sda.onlinestore.dto.AddressDto;
 import com.sda.onlinestore.dto.UserAccountDto;
 import com.sda.onlinestore.entity.Address;
 import com.sda.onlinestore.entity.UserAccount;
@@ -22,8 +23,13 @@ public class UserAccountTransformer {
     }
 
     public UserAccountDto transformReversed(UserAccount userAccount){
+        AddressDto addressDto = new AddressDto();
+        BeanUtils.copyProperties(userAccount.getAddress(), addressDto);
+
         UserAccountDto userAccountDto = new UserAccountDto();
         BeanUtils.copyProperties(userAccount, userAccountDto);
+
+        userAccountDto.setAddress(addressDto);
         return userAccountDto;
     }
 }

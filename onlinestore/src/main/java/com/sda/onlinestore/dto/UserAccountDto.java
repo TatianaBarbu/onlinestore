@@ -11,17 +11,18 @@ public class UserAccountDto {
     private String username;
     private String password;
     private String confirmPassword;
-    private AddressDto address;
+    private AddressDto addressDto;
     private Role role;
     private String thumbnail;
     private PreferredChannel preferredChannel;
 
-    public UserAccountDto(String email, String password, String thumbnail, String confirmPassword, String username) {
+    public UserAccountDto(AddressDto addressDto, String email, String password, String thumbnail, String confirmPassword, String username) {
         this.email = email;
         this.password = password;
         this.thumbnail = thumbnail;
         this.confirmPassword = confirmPassword;
         this.username = username;
+        this.addressDto = addressDto;
     }
 
     public UserAccountDto() {
@@ -77,11 +78,11 @@ public class UserAccountDto {
 
 
     public AddressDto getAddress() {
-        return address;
+        return addressDto;
     }
 
-    public void setAddress(AddressDto address) {
-        this.address = address;
+    public void setAddress(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
 
     public Long getId() {

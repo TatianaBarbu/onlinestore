@@ -2,6 +2,7 @@ package com.sda.onlinestore.mvcController;
 
 import com.sda.onlinestore.dto.AddressDto;
 import com.sda.onlinestore.dto.UserAccountDto;
+import com.sda.onlinestore.entity.Role;
 import com.sda.onlinestore.entity.UserAccount;
 import com.sda.onlinestore.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,40 +47,35 @@ public class UserAccountMVCController {
         if (!userAccountDto.getPassword().equals(userAccountDto.getConfirmPassword())) {
             result.rejectValue("password", null, "Passwords are not matching!");
         }
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "register";
         }
         userAccountService.addUserAccount(userAccountDto);
         return "login";
     }
 
-    @GetMapping("/viewUserAccounts")
+    @GetMapping(path = "/viewUserAccounts")
     public String viewUserAccounts(Model model) {
         model.addAttribute("users", this.userAccountService.getUserAccounts());
         return "userAccount-list";
     }
 
     @GetMapping(path = "/userAccount/edit/{id}")
-    public String showEditPage(@PathVariable("id") Long id, Model model){
+    public String showEditPage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("userAccount", this.userAccountService.findUserAccountById(id));
         return "edit-userAccount";
     }
 
     @GetMapping(path = "/userAccount/delete/{id}")
-    public String deleteUserAccountById(@PathVariable("id") Long id, Model model){
+    public String deleteUserAccountById(@PathVariable("id") Long id, Model model) {
         this.userAccountService.deleteUserAccountById(id);
         return "redirect:/viewUserAccounts";
     }
 
-    @GetMapping(path = "/signup")
-    public String showSignupPage(Model model){
-        model.addAttribute("userAccount", new UserAccount());
-        return "register";
-    }
 
     @PostMapping(path = "/userAccount/add")
-    public String addUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result, Model model){
-        if(result.hasErrors()){
+    public String addUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result, Model model) {
+        if (result.hasErrors()) {
             return "userAccount-list";
         }
         this.userAccountService.saveUserAccount(userAccount);
@@ -87,7 +83,7 @@ public class UserAccountMVCController {
     }
 
     @PostMapping(path = "/userAccount/update")
-    public String editUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result){
+    public String editUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result) {
         if (result.hasErrors()) {
             return "edit-userAccount";
         }

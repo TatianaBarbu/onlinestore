@@ -31,26 +31,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/viewUserAccounts" style="font-style: italic">All Users</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="font-style: italic">Disabled</a>
-            </li>
         </ul>
         <span style="color: white" sec:authorize="isAuthenticated()">
             | Logged as: <span  sec:authentication=" name"></span> |
             Roles: <span sec:authentication="principal.authorities"></span> |
             <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Log Out</a>
         </span>
-
-        <!-- Facebook -->
-        <a href="https://www.facebook.com" style="color: white; margin-left: 16px" class="fa fa-facebook"></a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com" style="color:  white; margin-left: 16px" class="fa fa-instagram"></a>
-        <!-- Twitter -->
-        <a href="https://www.twitter.com" style="color: white; margin-left: 16px" class="fa fa-twitter"></a>
-
-        <!-- Sign In -->
-        <a id="login" class="nav-link btn btn-outline-light rounded-pill" href="/login" style="margin-left: 16px">Log In</a>
-        <!-- Cart -->
     </div>
 </nav>
 
@@ -58,7 +44,7 @@
 
 <h2>User Accounts</h2>
 
-<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" th:href="@{/signup}">Create account</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success" th:href="@{/register}">Create new account</a>
 
 <div th:if="${users.size() == 0}">
     <h2>There is no user registered</h2>
@@ -76,7 +62,7 @@
     <tr th:each="user : ${users}">
         <td th:text="${user.username}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.address}"></td>
+        <td th:text="${user.address.city}"></td>
         <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary" th:href="@{/userAccount/edit/{id}(id = ${user.id})}"><i class="fas fa-user-edit"></i></a></td>
         <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger" th:href="@{/userAccount/delete/{id}(id = ${user.id})}"><i class="fas fa-trash-alt"></i></a></td>
     </tr>
