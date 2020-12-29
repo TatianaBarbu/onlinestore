@@ -51,7 +51,7 @@ public class UserAccountMVCController {
             return "register";
         }
         userAccountService.addUserAccount(userAccountDto);
-        return "login";
+        return "index";
     }
 
     @GetMapping(path = "/viewUserAccounts")
