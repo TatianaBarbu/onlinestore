@@ -72,22 +72,12 @@ public class UserAccountMVCController {
         return "redirect:/viewUserAccounts";
     }
 
-
-    @PostMapping(path = "/userAccount/add")
-    public String addUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "userAccount-list";
-        }
-        this.userAccountService.saveUserAccount(userAccount);
-        return "redirect:/";
-    }
-
     @PostMapping(path = "/userAccount/update")
     public String editUserAccount(@ModelAttribute("userAccount") @Valid UserAccount userAccount, BindingResult result) {
         if (result.hasErrors()) {
             return "edit-userAccount";
         }
         this.userAccountService.saveUserAccount(userAccount);
-        return "redirect:/";
+        return "redirect:/viewUserAccounts";
     }
 }

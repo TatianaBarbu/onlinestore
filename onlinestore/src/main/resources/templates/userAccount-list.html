@@ -29,6 +29,15 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#fruits">Fruits</a>
+                    <a class="dropdown-item" href="#vegetables">Vegetables</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
                 <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
                 </a>
@@ -41,7 +50,7 @@
         <span style="color: white" sec:authorize="isAuthenticated()">
             | Logged as: <span  sec:authentication=" name"></span> |
             Roles: <span sec:authentication="principal.authorities"></span> |
-            <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Log Out</a>
+            <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Logout</a>
         </span>
     </div>
 </nav>
