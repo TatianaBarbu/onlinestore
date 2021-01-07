@@ -5,14 +5,14 @@ import com.sda.onlinestore.dto.UserAccountDto;
 import com.sda.onlinestore.entity.Role;
 import com.sda.onlinestore.entity.UserAccount;
 import com.sda.onlinestore.service.UserAccountService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -27,8 +27,13 @@ public class UserAccountMVCController {
         this.userAccountService = userAccountService;
     }
 
-    @GetMapping(path = "/login")
-    public String showLogin() {
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
         return "login";
     }
 
@@ -37,6 +42,7 @@ public class UserAccountMVCController {
         model.addAttribute("userRegister", new UserAccountDto());
         return "register";
     }
+
 
     @PostMapping(path = "/user/register")
     public String registerUser(@ModelAttribute("userRegister") @Valid UserAccountDto userAccountDto, BindingResult result) {
@@ -80,4 +86,5 @@ public class UserAccountMVCController {
         this.userAccountService.saveUserAccount(userAccount);
         return "redirect:/viewUserAccounts";
     }
+
 }

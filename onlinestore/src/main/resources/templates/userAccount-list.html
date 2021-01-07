@@ -24,26 +24,17 @@
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="/home" class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
+    <a href=index.html class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#fruits">Fruits</a>
-                    <a class="dropdown-item" href="#vegetables">Vegetables</a>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-style: italic">
                     <a class="dropdown-item" href="/register">Add Account</a>
-                    <a class="dropdown-item" href="/viewUserAccounts">Account List</a>
+                    <a class="dropdown-item" href="userAccount-list.html">Account List</a>
                 </div>
             </li>
         </ul>
