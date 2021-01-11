@@ -28,7 +28,8 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,43 +38,27 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-style: italic">
-                    <a class="dropdown-item" href="/register">Add Account</a>
-                    <a class="dropdown-item" href="/viewUserAccounts">Account List</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/register">Add user</a>
+                    <a class="dropdown-item" href="/viewUserAccounts">User list</a>
                 </div>
             </li>
         </ul>
 
+        <!-- Sign In -->
+        <a id="login" class="nav-link btn btn-outline-light rounded-pill" sec:authorize="!isAuthenticated()" th:href="@{/login}" style="margin-left: 16px">Login</a>
         <span style="color: white" sec:authorize="isAuthenticated()">
-            | Logged as: <span  sec:authentication=" name"></span> |
+            | Logged as: <span sec:authentication=" name"></span> |
             Roles: <span sec:authentication="principal.authorities"></span> |
-            <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Logout</a>
+            <a id="logout" class="btn btn-outline-light rounded-pill" style="margin-left: 16px" th:href="@{/logout}">Logout</a>
         </span>
 
-        <!-- Facebook -->
-        <a href="https://www.facebook.com" style="color: white; margin-left: 16px" class="fa fa-facebook"></a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com" style="color:  white; margin-left: 16px" class="fa fa-instagram"></a>
-        <!-- Twitter -->
-        <a href="https://www.twitter.com" style="color: white; margin-left: 16px" class="fa fa-twitter"></a>
-
-        <!-- Sign In -->
-        <a id="login" class="nav-link btn btn-outline-light rounded-pill" href="/login" style="margin-left: 16px">Login</a>
         <!-- Create Account -->
-        <a class="nav-link btn btn-outline-light rounded-pill" href="/register" style="margin-left: 16px">Create
-            Account</a>
-        <!-- Cart -->
-        <a href="#" style="margin-left: 26px; margin-right: 15px">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-basket3-fill" fill="white"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z"/>
-                <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
-            </svg>
-        </a>
+        <a class="nav-link btn btn-outline-light rounded-pill" href="/register" style="margin-left: 16px" sec:authorize="!isAuthenticated()">Register</a>
     </div>
 </nav>
 
@@ -118,85 +103,7 @@
         </div>
     </div>
 </div>
-<!-- Items in the Shop (Products) -->
-<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-    <!-- Vegetables -->
-    <div class="text-center font-italic font-weight-bold" id="vegetables"
-         style="padding-top: 100px; padding-bottom: 30px"><h3>Vegetables</h3></div>
-    <div class="card-group">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-    </div>
 
-
-    <!-- Fruits -->
-    <div class="text-center font-italic font-weight-bold"
-         id="fruits" style="padding-top: 100px; padding-bottom: 30px;"><h3>Fruits</h3></div>
-    <div class="card-group">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="banana">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
