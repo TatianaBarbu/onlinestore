@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -57,6 +58,100 @@
             <a href="#" style="color:white" class="btn">Forgot password?</a>
         </div>
     </div>
+=======
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="../static/loginStyle.css" ;>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="index.html" class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#fruits">Fruits</a>
+                    <a class="dropdown-item" href="#vegetables">Vegetables</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Users
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-style: italic">
+                    <a class="dropdown-item" href="/register">Add Account</a>
+                    <a class="dropdown-item" href="/viewUserAccounts">Account List</a>
+                </div>
+            </li>
+        </ul>
+
+        <span style="color: white" sec:authorize="isAuthenticated()">
+            | Logged as: <span  sec:authentication=" name"></span> |
+            Roles: <span sec:authentication="principal.authorities"></span> |
+            <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Logout</a>
+        </span>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com" style="color: white; margin-left: 16px" class="fa fa-facebook"></a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com" style="color:  white; margin-left: 16px" class="fa fa-instagram"></a>
+        <!-- Twitter -->
+        <a href="https://www.twitter.com" style="color: white; margin-left: 16px" class="fa fa-twitter"></a>
+
+        <!-- Sign In -->
+        <a id="login" class="nav-link btn btn-outline-light rounded-pill" href="login.html" style="margin-left: 16px" >Login</a>
+        <!-- Create Account -->
+        <a class="nav-link btn btn-outline-light rounded-pill" href="register.html" style="margin-left: 16px">Create
+            Account</a>
+        <!-- Cart -->
+        <a href="#" style="margin-left: 26px; margin-right: 15px">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-basket3-fill" fill="white"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z"/>
+                <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
+            </svg>
+        </a>
+    </div>
+</nav>
+<div class="login">
+    <div>
+        <h1>User Authentication </h1>
+    </div>
+    <p class="error" role="alert" th:if="${loginError}">
+        Wrong username or password!
+    </p>
+    <div class="alert alert-secondary" role="alert" th:if="${param.logout}">
+        You have been logged out!
+    </div>
+<form th:action="@{/login}" method="post">
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username">
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+    </div>
+    <div>
+        <input type="submit" value="Login">
+    </div>
+Don't have an account? Register <a href="register.html">here</a>
+</form>
+>>>>>>> 11e2ece2ea2e527b125d9ee71ff20c82949275e0
 </div>
 </body>
 </html>

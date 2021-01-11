@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -51,5 +52,119 @@
     </div>
 </form>
 
+=======
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="../static/registerStyle.css" ;>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="index.html" class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#fruits">Fruits</a>
+                    <a class="dropdown-item" href="#vegetables">Vegetables</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Users
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-style: italic">
+                    <a class="dropdown-item" href="/register">Add Account</a>
+                    <a class="dropdown-item" href="/viewUserAccounts">Account List</a>
+                </div>
+            </li>
+        </ul>
+
+        <span style="color: white" sec:authorize="isAuthenticated()">
+            | Logged as: <span  sec:authentication=" name"></span> |
+            Roles: <span sec:authentication="principal.authorities"></span> |
+            <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Logout</a>
+        </span>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com" style="color: white; margin-left: 16px" class="fa fa-facebook"></a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com" style="color:  white; margin-left: 16px" class="fa fa-instagram"></a>
+        <!-- Twitter -->
+        <a href="https://www.twitter.com" style="color: white; margin-left: 16px" class="fa fa-twitter"></a>
+
+        <!-- Sign In -->
+        <a id="login" class="nav-link btn btn-outline-light rounded-pill" href="login.html" style="margin-left: 16px" >Login</a>
+        <!-- Create Account -->
+        <a class="nav-link btn btn-outline-light rounded-pill" href="register.html" style="margin-left: 16px">Create
+            Account</a>
+        <!-- Cart -->
+        <a href="#" style="margin-left: 26px; margin-right: 15px">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-basket3-fill" fill="white"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172z"/>
+                <path d="M2.468 15.426L.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z"/>
+            </svg>
+        </a>
+    </div>
+</nav>
+<div class="register">
+    <div>
+        <h1>User Registration </h1>
+    </div>
+<form  th:action="@{/user/register}" th:object="${userRegister}" method="post">
+    <div>
+        <label for="username"></label>
+        <input type="text" th:field="${userRegister.username}" id="username" placeholder="User Name">
+        <span th:if="${#fields.hasErrors('username')}" th:errors="${userRegister.username}"></span>
+    </div>
+    <div>
+        <label for="email"></label>
+        <input type="email" th:field="${userRegister.email}" id="email" placeholder="Email">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="${userRegister.email}"></span>
+    </div>
+    <div class="place">
+        <label for="country"></label>
+        <input type="text" th:field="${userRegister.address.country}" id="country" placeholder="Country">
+
+        <label for="city"></label>
+        <input type="text" th:field="${userRegister.address.city}" id="city" placeholder="City">
+    </div>
+    <div>
+        <label for="street"></label>
+        <input type="text" th:field="${userRegister.address.street}" id="street" placeholder="Street">
+
+        <label for="zipcode"></label>
+        <input type="text" th:field="${userRegister.address.zipCode}" id="zipcode" placeholder="Zip Code">
+    </div>
+    <div>
+        <label for="password"></label>
+        <input type="password" th:field="${userRegister.password}" id="password" placeholder="Password">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="${userRegister.password}"></span>
+    </div>
+    <div>
+        <label for="confirmPassword"></label>
+        <input type="password" th:field="${userRegister.confirmPassword}" id="confirmPassword" placeholder="Confirm Password">
+        <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="${userRegister.confirmPassword}"></span>
+    </div>
+    <div>
+        <input type="submit" value="Register">
+    </div>
+Already have an account? Log in <a href="login.html">here!</a>
+</form>
+</div>
+>>>>>>> 11e2ece2ea2e527b125d9ee71ff20c82949275e0
 </body>
 </html>
