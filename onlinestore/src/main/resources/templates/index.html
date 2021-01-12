@@ -29,23 +29,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#fruits">Fruits</a>
-                    <a class="dropdown-item" href="#vegetables">Vegetables</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
                 <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Users
+                    User Control
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/register">Add user</a>
-                    <a class="dropdown-item" href="/viewUserAccounts">User list</a>
+                    <a class="dropdown-item" href="/register">Register user</a>
+                    <a class="dropdown-item" href="/viewUserAccounts">User accounts</a>
                 </div>
             </li>
         </ul>
