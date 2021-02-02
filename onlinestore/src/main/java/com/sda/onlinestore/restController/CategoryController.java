@@ -1,33 +1,60 @@
 package com.sda.onlinestore.restController;
-
-import com.sda.onlinestore.dto.AuthorDto;
 import com.sda.onlinestore.dto.CategoryDto;
-import com.sda.onlinestore.service.AuthorService;
+import com.sda.onlinestore.entity.Category;
 import com.sda.onlinestore.service.CategoryService;
+import com.sda.onlinestore.transformers.CategoryTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
-@Controller
+
+@RestController
+@RequestMapping(path = "/api/category")
+@CrossOrigin(origins = "*")
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
-    @PostMapping("/api/addCategory")
-    public ResponseEntity addCategory(@RequestBody CategoryDto categoryDto){
-        categoryService.addCategory(categoryDto);
-        return ResponseEntity.ok(HttpStatus.OK);
+    private final CategoryTransformer categoryTransformer;
+
+    @Autowired
+    public CategoryController(CategoryService categoryService, CategoryTransformer categoryTransformer){
+        this.categoryService = categoryService;
+        this.categoryTransformer = categoryTransformer;
     }
 
-    @GetMapping("/api/getCategories")
-    public ResponseEntity getCategories(){
+    @PostMapping
+    public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto categoryDto){
+        Category category = categoryTransformer.transform(categoryDto);
+        Category savedCategory = categoryService.saveCategory(category);
+        CategoryDto savedCategoryDto = categoryTransformer.transformReversed(savedCategory);
+        return ResponseEntity.ok(savedCategoryDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoryDto>> getCategories(){
         List<CategoryDto> categoryDtoList = categoryService.getCategories();
         return ResponseEntity.ok(categoryDtoList);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<CategoryDto> findCategoryById(@PathVariable("id") Long id){
+        Category category = categoryService.findCategoryById(id);
+        CategoryDto categoryDto = categoryTransformer.transformReversed(category);
+        return ResponseEntity.ok(categoryDto);
+    }
+
+    @PutMapping
+    public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto){
+        Category category = categoryTransformer.transform(categoryDto);
+        Category savedCategory = categoryService.saveCategory(category);
+        CategoryDto savedCategoryDto = categoryTransformer.transformReversed(savedCategory);
+        return ResponseEntity.ok(savedCategoryDto);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteCategoryById(@PathVariable("id") Long id){
+        categoryService.deleteCategoryById(id);
+        return ResponseEntity.noContent().build();
     }
 }

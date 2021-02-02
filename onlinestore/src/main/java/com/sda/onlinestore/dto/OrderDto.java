@@ -9,7 +9,6 @@ import java.util.Date;
 
 public class OrderDto {
 
-    private Long id;
     private double totalCost;
     private Address deliveryAddress;
     private Date dateOfOrder;
@@ -17,15 +16,6 @@ public class OrderDto {
     //order lines
     //user account  ??
     //order status
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public double getTotalCost() {
         return totalCost;

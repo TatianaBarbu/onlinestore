@@ -19,7 +19,6 @@ public class OrderLineService {
 
     public void addOrderLine(OrderLineDto orderLineDto){
         OrderLine orderLine = new OrderLine();
-        orderLine.setId(orderLineDto.getId());
         orderLine.setProduct(orderLineDto.getProduct());
         orderLine.setQuantity(orderLineDto.getQuantity());
         orderLine.setPrice(orderLineDto.getPrice());
@@ -33,7 +32,6 @@ public class OrderLineService {
 
         for (OrderLine orderLine: orderLineList){
             OrderLineDto orderLineDto = new OrderLineDto();
-            orderLineDto.setId(orderLine.getId());
             orderLineDto.setProduct(orderLine.getProduct());
             orderLineDto.setQuantity(orderLine.getQuantity());
         }

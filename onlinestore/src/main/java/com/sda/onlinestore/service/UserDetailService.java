@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Service("userService")
@@ -51,7 +52,7 @@ public class UserDetailService implements UserDetailsService {
         String userName = userCredentialModel.getUsername();
         String password = userCredentialModel.getPassword();
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        //ROLE_ADMIN is important to be picked up by hasRole from @PreAuthorize in DummyConteoller
+        //ROLE_ADMIN is important to be picked up by hasRole from @PreAuthorize in DummyController
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_" + userCredentialModel.getRole().getRoleName().toUpperCase());
         authorities.add(simpleGrantedAuthority);
         return new User(userName, password, authorities);

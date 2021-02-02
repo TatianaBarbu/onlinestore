@@ -14,8 +14,9 @@ public class Product {
     private String description;
     private String thumbnail;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Category category;
+
     private int price;
 
     @Enumerated(EnumType.STRING)

@@ -33,7 +33,6 @@ public class OrderService {
 
     public void addOrder(OrderDto orderDto) {
         Order order = new Order();
-        order.setId(orderDto.getId());
         order.setTotalCost(orderDto.getTotalCost());
         order.setDeliveryAddress(orderDto.getDeliveryAddress());
         order.setDateOfOrder(orderDto.getDateOfOrder());
@@ -85,7 +84,6 @@ public class OrderService {
 
         for (Order order : orderList) {
             OrderDto orderDto = new OrderDto();
-            orderDto.setId(order.getId());
             orderDto.setTotalCost(order.getTotalCost());
             orderDto.setDeliveryAddress(order.getDeliveryAddress());
             orderDto.setDateOfOrder(order.getDateOfOrder());

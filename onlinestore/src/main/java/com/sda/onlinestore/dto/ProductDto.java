@@ -10,17 +10,15 @@ public class ProductDto {
 
     private String description;
     private String thumbnail;
-    private Category category;
+    private CategoryDto category;
     private int price;
-    private ProductType productType;
     private Author author;
 
-    public ProductDto(String description, String thumbnail, Category category, int price, ProductType productType, Author author) {
+    public ProductDto(String description, String thumbnail, CategoryDto category, int price, Author author) {
         this.description = description;
         this.thumbnail = thumbnail;
         this.category = category;
         this.price = price;
-        this.productType = productType;
         this.author = author;
     }
 
@@ -43,11 +41,11 @@ public class ProductDto {
         this.thumbnail = thumbnail;
     }
 
-    public Category getCategory() {
+    public CategoryDto getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDto category) {
         this.category = category;
     }
 
@@ -57,14 +55,6 @@ public class ProductDto {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
     }
 
     public Author getAuthor() {

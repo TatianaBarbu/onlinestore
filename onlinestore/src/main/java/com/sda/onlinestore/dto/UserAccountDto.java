@@ -12,21 +12,37 @@ public class UserAccountDto {
     private String password;
     private String confirmPassword;
     private AddressDto addressDto;
-    private Role role;
+    private RoleDto role;
     private String thumbnail;
-    private PreferredChannel preferredChannel;
 
-    public UserAccountDto(AddressDto addressDto, String email, String password, String thumbnail, String confirmPassword, String username) {
+    public UserAccountDto(AddressDto addressDto, String email, String password, String thumbnail, String confirmPassword, String username, RoleDto role) {
         this.email = email;
         this.password = password;
         this.thumbnail = thumbnail;
         this.confirmPassword = confirmPassword;
         this.username = username;
         this.addressDto = addressDto;
+        this.role = role;
     }
 
     public UserAccountDto() {
     }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public AddressDto getAddressDto() {
+        return addressDto;
+    }
+
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
+    }
+
 
     public String getEmail() {
         return email;
@@ -68,11 +84,11 @@ public class UserAccountDto {
         this.username = username;
     }
 
-    public Role getRole() {
+    public RoleDto getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleDto role) {
         this.role = role;
     }
 
@@ -83,13 +99,5 @@ public class UserAccountDto {
 
     public void setAddress(AddressDto addressDto) {
         this.addressDto = addressDto;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

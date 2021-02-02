@@ -39,8 +39,29 @@ public class UserAccountService implements UserDetailsService {
         this.userAccountRepository = userAccountRepository;
     }
 
+    public UserAccount saveUserAccount(UserAccount userAccount) {
+        return userAccountRepository.save(userAccount);
+    }
+
+    public UserAccount findUserAccountById(Long id) {
+        Optional<UserAccount> optUserAccount = userAccountRepository.findById(id);
+        if(optUserAccount.isPresent()){
+            UserAccount userAccount = optUserAccount.get();
+            System.out.println(userAccount.toString());
+            return userAccount;
+        } else {
+            System.out.println("User account with ID " + id + " does not exist.");
+            throw new NotFoundException("User account with ID " + id + " does not exist.");
+        }
+    }
+
     public Optional<UserAccount> findUserAccountByUsername(String username) {
         return this.userAccountRepository.findUserAccountByUsername(username);
+    }
+
+    public void deleteUserAccountById(Long id) {
+        this.findUserAccountById(id);
+        userAccountRepository.deleteById(id);
     }
 
     public void addUserAccount(UserAccountDto userAccountDto) {
@@ -82,24 +103,4 @@ public class UserAccountService implements UserDetailsService {
         }
     }
 
-    public UserAccount saveUserAccount(UserAccount userAccount) {
-        return userAccountRepository.save(userAccount);
-    }
-    
-    public UserAccount findUserAccountById(Long id) {
-        Optional<UserAccount> optUserAccount = userAccountRepository.findById(id);
-        if(optUserAccount.isPresent()){
-            UserAccount userAccount = optUserAccount.get();
-            System.out.println(userAccount.toString());
-            return userAccount;
-        } else {
-            System.out.println("User account with ID " + id + " does not exist.");
-            throw new NotFoundException("User account with ID " + id + " does not exist.");
-        }
-    }
-
-    public void deleteUserAccountById(Long id) {
-        this.findUserAccountById(id);
-        userAccountRepository.deleteById(id);
-    }
 }

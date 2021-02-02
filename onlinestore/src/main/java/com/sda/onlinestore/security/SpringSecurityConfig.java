@@ -31,9 +31,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-    // roles admin allow to access /admin/**
-    // roles user allow to access /user/**
-    // custom 403 access denied handler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()

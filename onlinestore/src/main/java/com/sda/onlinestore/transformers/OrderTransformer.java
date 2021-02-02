@@ -1,7 +1,9 @@
 package com.sda.onlinestore.transformers;
 
+import com.sda.onlinestore.dto.AuthorDto;
 import com.sda.onlinestore.dto.OrderDto;
 import com.sda.onlinestore.dto.OrderLineDto;
+import com.sda.onlinestore.entity.Author;
 import com.sda.onlinestore.entity.Order;
 import com.sda.onlinestore.entity.OrderLine;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +23,4 @@ public class OrderTransformer {
         BeanUtils.copyProperties(order, orderDto);
         return orderDto;
     }
-
-
 }
