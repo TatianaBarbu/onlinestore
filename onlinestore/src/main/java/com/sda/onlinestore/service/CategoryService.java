@@ -38,7 +38,6 @@ public class CategoryService {
     }
 
     public List<CategoryDto> getCategories(){
-
         List<Category> categories = categoryRepository.findAll();
         List<CategoryDto> categoryDtosList = new ArrayList<>();
         for(Category category:categories){
@@ -61,7 +60,7 @@ public class CategoryService {
         }
     }
 
-    public Optional<Category> findCategoryByName(String name){
+    public List<Category> findCategoryByName(String name){
         return this.categoryRepository.findCategoryByName(name);
     }
 

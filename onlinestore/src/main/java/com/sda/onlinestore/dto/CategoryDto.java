@@ -4,11 +4,12 @@ import java.util.List;
 
 public class CategoryDto {
 
+    private Long id;
     private List<ProductDto> productDtoList;
-
     private String name;
 
-    public CategoryDto(String name, List<ProductDto> productDtoList) {
+    public CategoryDto(Long id, String name, List<ProductDto> productDtoList) {
+        this.id = id;
         this.name = name;
         this.productDtoList = productDtoList;
     }
@@ -31,5 +32,13 @@ public class CategoryDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

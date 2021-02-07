@@ -1,6 +1,8 @@
 package com.sda.onlinestore.restController;
 
+import com.sda.onlinestore.dto.CategoryDto;
 import com.sda.onlinestore.dto.UserAccountDto;
+import com.sda.onlinestore.entity.Category;
 import com.sda.onlinestore.entity.UserAccount;
 import com.sda.onlinestore.service.UserAccountService;
 import com.sda.onlinestore.transformers.UserAccountTransformer;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -43,19 +46,26 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountDtoList);
     }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<UserAccountDto> findUserAccountById(@PathVariable("id") Long id) {
+        UserAccount userAccount = userAccountService.findUserAccountById(id);
+        UserAccountDto userAccountDto = userAccountTransformer.transformReversed(userAccount);
+        return ResponseEntity.ok(userAccountDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserAccountDto>> getUserAccountByUsername(@RequestParam(value = "username") String username){
+        Optional<UserAccount> userAccounts = userAccountService.findUserAccountByUsername(username);
+        List<UserAccountDto> userAccountDtos = userAccounts.stream().map(userAccountTransformer::transformReversed).collect(Collectors.toList());
+        return ResponseEntity.ok(userAccountDtos);
+    }
+
     @PutMapping
     public ResponseEntity<UserAccountDto> updateUserAccount(@RequestBody UserAccountDto userAccountDto) {
         UserAccount userAccount = userAccountTransformer.transform(userAccountDto);
         UserAccount savedUserAccount = userAccountService.saveUserAccount(userAccount);
         UserAccountDto savedUserAccountDto = userAccountTransformer.transformReversed(savedUserAccount);
         return ResponseEntity.ok(savedUserAccountDto);
-    }
-
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<UserAccountDto> findUserAccountById(@PathVariable("id") Long id) {
-        UserAccount userAccount = userAccountService.findUserAccountById(id);
-        UserAccountDto userAccountDto = userAccountTransformer.transformReversed(userAccount);
-        return ResponseEntity.ok(userAccountDto);
     }
 
     @DeleteMapping(path = "/{id}")

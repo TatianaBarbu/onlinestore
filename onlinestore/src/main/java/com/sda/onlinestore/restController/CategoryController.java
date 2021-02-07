@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/api/category")
@@ -42,6 +43,13 @@ public class CategoryController {
         Category category = categoryService.findCategoryById(id);
         CategoryDto categoryDto = categoryTransformer.transformReversed(category);
         return ResponseEntity.ok(categoryDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoryDto>> getCategoryByName(@RequestParam(value = "name") String name) {
+        List<Category> categories = categoryService.findCategoryByName(name);
+        List<CategoryDto> categoryDtos = categories.stream().map(categoryTransformer::transformReversed).collect(Collectors.toList());
+        return ResponseEntity.ok(categoryDtos);
     }
 
     @PutMapping

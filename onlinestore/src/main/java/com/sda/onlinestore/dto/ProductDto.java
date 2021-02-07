@@ -8,21 +8,33 @@ import javax.persistence.*;
 
 public class ProductDto {
 
+    private Long id;
     private String description;
     private String thumbnail;
-    private CategoryDto category;
+    private CategoryDto categoryDto;
     private int price;
-    private Author author;
+    private ProductTypeDto productTypeDto;
+    private AuthorDto authorDto;
 
-    public ProductDto(String description, String thumbnail, CategoryDto category, int price, Author author) {
+    public ProductDto(Long id, String description, String thumbnail, CategoryDto categoryDto, int price, ProductTypeDto productTypeDto, AuthorDto authorDto) {
+        this.id = id;
         this.description = description;
         this.thumbnail = thumbnail;
-        this.category = category;
+        this.categoryDto = categoryDto;
         this.price = price;
-        this.author = author;
+        this.productTypeDto = productTypeDto;
+        this.authorDto = authorDto;
     }
 
     public ProductDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -41,12 +53,12 @@ public class ProductDto {
         this.thumbnail = thumbnail;
     }
 
-    public CategoryDto getCategory() {
-        return category;
+    public CategoryDto getCategoryDto() {
+        return categoryDto;
     }
 
-    public void setCategory(CategoryDto category) {
-        this.category = category;
+    public void setCategoryDto(CategoryDto categoryDto) {
+        this.categoryDto = categoryDto;
     }
 
     public int getPrice() {
@@ -57,11 +69,19 @@ public class ProductDto {
         this.price = price;
     }
 
-    public Author getAuthor() {
-        return author;
+    public ProductTypeDto getProductTypeDto() {
+        return productTypeDto;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setProductTypeDto(ProductTypeDto productTypeDto) {
+        this.productTypeDto = productTypeDto;
+    }
+
+    public AuthorDto getAuthorDto() {
+        return authorDto;
+    }
+
+    public void setAuthorDto(AuthorDto authorDto) {
+        this.authorDto = authorDto;
     }
 }

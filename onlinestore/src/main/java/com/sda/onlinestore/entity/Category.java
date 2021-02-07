@@ -12,12 +12,13 @@ public class Category {
     private Long id;
 
     @OneToMany(mappedBy = "category", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    private final List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     private String name;
 
-    public Category(String name) {
+    public Category(String name, List<Product> products) {
         this.name = name;
+        this.products = products;
     }
 
     public Category() {
@@ -25,6 +26,10 @@ public class Category {
 
     public List<Product> getProducts() {
         return products;
+    }
+
+    public void setProducts(List<Product> products){
+        this.products = products;
     }
 
     public Long getId() {

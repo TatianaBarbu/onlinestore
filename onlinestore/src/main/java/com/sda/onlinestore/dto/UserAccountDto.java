@@ -15,7 +15,8 @@ public class UserAccountDto {
     private RoleDto role;
     private String thumbnail;
 
-    public UserAccountDto(AddressDto addressDto, String email, String password, String thumbnail, String confirmPassword, String username, RoleDto role) {
+    public UserAccountDto(Long id, AddressDto addressDto, String email, String password, String thumbnail, String confirmPassword, String username, RoleDto role) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.thumbnail = thumbnail;
