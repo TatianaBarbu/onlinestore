@@ -52,12 +52,12 @@ public class ProductController {
         return ResponseEntity.ok(productDto);
     }
 
-    @GetMapping
-    public ResponseEntity<List<ProductDto>> getProductByProductType(@RequestParam(value = "productType") String productType) {
-        List<Product> products = productService.findProductByProductType(productType);
-        List<ProductDto> productDtos = products.stream().map(productTransformer::transformReversed).collect(Collectors.toList());
-        return ResponseEntity.ok(productDtos);
-    }
+//    @GetMapping
+////    public ResponseEntity<List<ProductDto>> getProductByProductType(@RequestParam(value = "productType") String productType) {
+////        List<Product> products = productService.findProductByProductType(productType);
+////        List<ProductDto> productDtos = products.stream().map(productTransformer::transformReversed).collect(Collectors.toList());
+////        return ResponseEntity.ok(productDtos);
+////    }
 
     @PutMapping
     public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto) {

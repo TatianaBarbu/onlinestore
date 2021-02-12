@@ -53,12 +53,12 @@ public class UserAccountController {
         return ResponseEntity.ok(userAccountDto);
     }
 
-    @GetMapping
-    public ResponseEntity<List<UserAccountDto>> getUserAccountByUsername(@RequestParam(value = "username") String username){
-        Optional<UserAccount> userAccounts = userAccountService.findUserAccountByUsername(username);
-        List<UserAccountDto> userAccountDtos = userAccounts.stream().map(userAccountTransformer::transformReversed).collect(Collectors.toList());
-        return ResponseEntity.ok(userAccountDtos);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<UserAccountDto>> getUserAccountByUsername(@RequestParam(value = "username") String username){
+//        Optional<UserAccount> userAccounts = userAccountService.findUserAccountByUsername(username);
+//        List<UserAccountDto> userAccountDtos = userAccounts.stream().map(userAccountTransformer::transformReversed).collect(Collectors.toList());
+//        return ResponseEntity.ok(userAccountDtos);
+//    }
 
     @PutMapping
     public ResponseEntity<UserAccountDto> updateUserAccount(@RequestBody UserAccountDto userAccountDto) {

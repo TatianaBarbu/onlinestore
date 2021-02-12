@@ -45,12 +45,12 @@ public class CategoryController {
         return ResponseEntity.ok(categoryDto);
     }
 
-    @GetMapping
-    public ResponseEntity<List<CategoryDto>> getCategoryByName(@RequestParam(value = "name") String name) {
-        List<Category> categories = categoryService.findCategoryByName(name);
-        List<CategoryDto> categoryDtos = categories.stream().map(categoryTransformer::transformReversed).collect(Collectors.toList());
-        return ResponseEntity.ok(categoryDtos);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<CategoryDto>> getCategoryByName(@RequestParam(value = "name") String name) {
+//        List<Category> categories = categoryService.findCategoryByName(name);
+//        List<CategoryDto> categoryDtos = categories.stream().map(categoryTransformer::transformReversed).collect(Collectors.toList());
+//        return ResponseEntity.ok(categoryDtos);
+//    }
 
     @PutMapping
     public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto){
