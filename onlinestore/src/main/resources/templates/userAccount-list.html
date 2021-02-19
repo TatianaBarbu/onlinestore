@@ -24,12 +24,13 @@
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="index.html" class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
+    <a href="/home" class="navbar-brand"><h2 style="font-style: italic">Online Store</h2></a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link dropdown-toggle" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     User Control
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-style: italic">
@@ -39,14 +40,14 @@
             </li>
         </ul>
         <span style="color: white" sec:authorize="isAuthenticated()">
-            | Logged as: <span  sec:authentication=" name"></span> |
+            | Logged as: <span sec:authentication=" name"></span> |
             Roles: <span sec:authentication="principal.authorities"></span> |
             <a id="logout" class="btn btn-outline-light rounded-pill" th:href="@{/logout}">Logout</a>
         </span>
     </div>
 </nav>
 
-<!-- Table content and fucntionalities -->
+<!-- Table content and functionalities -->
 
 <h2>User Accounts</h2>
 
@@ -54,7 +55,7 @@
     <h2>There is no user registered</h2>
 </div>
 
-<table class="table table-hover table-responsive" style ="align-content: center" th:if="${users.size() > 0}">
+<table class="table table-hover table-responsive" style="align-content: center" th:if="${users.size() > 0}">
     <thead class="my-table-header">
     <th>User Name</th>
     <th>Email</th>
@@ -73,8 +74,12 @@
         <td th:text="${user.address.city}"></td>
         <td th:text="${user.address.street}"></td>
         <td th:text="${user.address.zipCode}"></td>
-        <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary" th:href="@{/userAccount/edit/{id}(id = ${user.id})}"><i class="fas fa-user-edit"></i></a></td>
-        <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger" th:href="@{/userAccount/delete/{id}(id = ${user.id})}"><i class="fas fa-trash-alt"></i></a></td>
+        <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary"
+                                                     th:href="@{/userAccount/edit/{id}(id = ${user.id})}"><i
+                class="fas fa-user-edit"></i></a></td>
+        <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger"
+                                                     th:href="@{/userAccount/delete/{id}(id = ${user.id})}"><i
+                class="fas fa-trash-alt"></i></a></td>
     </tr>
     </tbody>
 </table>
